@@ -62,12 +62,14 @@
       const senha = document.getElementById("senha").value;
       const erro = document.getElementById("erro");
 
-      if (senha === "2704") {
-        // Aqui colocamos o link para o outro pen
-        window.location.href = "https://chica-benta.github.io/nossodia/";
-      } else {
-        erro.textContent = "Hmm... tenta de novo 💭";
-      }
+if (senha === "2704") {
+  setTimeout(function() {
+    window.location.href = "https://chica-benta.github.io/nossodia/";
+  }, 500); // Aguarda 500ms antes de redirecionar
+} else {
+  erro.textContent = "Hmm... tenta de novo 💭";
+}
+
     }
   </script>
 </body>
