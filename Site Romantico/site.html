@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Site Romântico</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: white;
+      font-family: 'Dancing Script', cursive;
+      overflow-x: hidden;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .titulo {
+      font-size: 3em;
+      margin-top: 40px;
+      color: #ff6ec7;
+    }
+
+    .contador {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+
+    .carrossel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .carrossel img {
+      width: 100%;
+      max-width: 600px;  /* Limita o tamanho máximo da imagem */
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 110, 199, 0.5);
+    }
+
+    .carrossel button {
+      font-size: 2em;
+      background: none;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .carrossel button:hover {
+      transform: scale(1.2);
+    }
+
+    .texto {
+      font-size: 1.5em;
+      font-family: 'Great Vibes', cursive;
+      margin: 40px 20px;
+      color: white;
+    }
+
+    .coraçoes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .coraçao {
+      position: absolute;
+      top: 100%;
+      width: 30px;
+      height: 30px;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
+      background-size: cover;
+      animation: subir 5s linear forwards;
+    }
+
+    @keyframes subir {
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body onclick="iniciarMusica()">
+
+  <div class="titulo">Nosso Dia <3</div>
+  <div class="contador" id="contador"></div>
+
+  <div class="carrossel">
+    <button class="esquerda" onclick="mudarImagem(-1)">&#10094;</button>
+    <img id="imagem" src="imagens/foto1.jpg" alt="foto">
+    <button class="direita" onclick="mudarImagem(1)">&#10095;</button>
+  </div>
+
+  <div class="texto">
+    "FELIZ NOSSO ANIVERSÁRIO MEU AMOOOOOORRR!!! Eu sei que deixamos pra comemorar com presentes e tudo no mês que vem, mas eu não podia deixar nosso dia de lado então preparei isso ^-^ (não se preocupa, não tive nenhum trabalho já que o chat gpt que criou o código todo, eu nem sei programação!). Hoje eu só quero te dizer o quanto você é especial pra mim e o quanto eu te amo, amo cada coisa que você faz por mim, cada ato de amor, de respeito, de paixão. Ver vc melhorando como pessoa e como namorado cada dia mais me faz ter vontade de melhorar também. Vc me deixa feliz e me faz crescer junto de vc. Eu quero agradecer por todo o nosso tempo juntos, por termos chegado até aqui e dizer que você é incrível!!! Eu te amo amorzinho<3"
+  </div>
+
+  <div class="coraçoes"></div>
+
+  <!-- Música tocando automaticamente, mas com interação do usuário -->
+  <audio id="musica" loop>
+    <source src="musica/Stephen - Play Me Like A Violin.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    function iniciarMusica() {
+      const musica = document.getElementById('musica');
+      musica.play();
+    }
+
+    const inicio = new Date('2024-04-27');
+    const contador = document.getElementById('contador');
+    function atualizarContador() {
+      const hoje = new Date();
+      const diff = Math.floor((hoje - inicio) / (1000 * 60 * 60 * 24));
+      contador.textContent = `Estamos juntos há ${diff} dias♥`;
+    }
+    atualizarContador();
+
+    const imagens = [
+      'imagens/foto1.jpg',
+      'imagens/foto2.jpg',
+      'imagens/foto3.jpg',
+      'imagens/foto4.jpg',
+      'imagens/foto5.jpg'
+    ];
+    let atual = 0;
+    const img = document.getElementById('imagem');
+    function mudarImagem(direcao) {
+      atual = (atual + direcao + imagens.length) % imagens.length;
+      img.src = imagens[atual];
+    }
+
+    function criarCoraçao() {
+      const coraçoes = document.querySelector('.coraçoes');
+      const coraçao = document.createElement('div');
+      coraçao.classList.add('coraçao');
+      coraçao.style.left = Math.random() * 100 + 'vw';
+      coraçoes.appendChild(coraçao);
+      setTimeout(() => coraçao.remove(), 5000);
+    }
+    setInterval(criarCoraçao, 300);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bem-vindo 💖</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: white;
+      font-family: 'Dancing Script', cursive;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ff6ec7;
+      margin-bottom: 40px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #ff6ec7;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .mensagem-erro {
+      color: #ff8080;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Esse cantinho é só pra alguém especial... 💌</h1>
+  <p>Qual é a nossa data de namoro? (formato: DDMM)</p>
+  <input type="text" id="senha" placeholder="Digite aqui..." maxlength="4" />
+  <button onclick="verificarSenha()">Entrar ❤️</button>
+  <div class="mensagem-erro" id="erro"></div>
+
+  <script>
+    function verificarSenha() {
+      const senha = document.getElementById("senha").value;
+      const erro = document.getElementById("erro");
+
+      if (senha === "2704") {
+        // Aqui colocamos o link para o outro pen
+        window.location.href = "https://codepen.io/Hitler-Negro/pen/ByyLNoB";
+      } else {
+        erro.textContent = "Hmm... tenta de novo 💭";
+      }
+    }
+  </script>
+</body>
+</html>
